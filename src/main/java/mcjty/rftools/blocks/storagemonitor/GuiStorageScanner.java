@@ -10,16 +10,20 @@ import mcjty.lib.gui.layout.HorizontalAlignment;
 import mcjty.lib.gui.layout.HorizontalLayout;
 import mcjty.lib.gui.layout.PositionalLayout;
 import mcjty.lib.gui.layout.VerticalLayout;
+import mcjty.lib.gui.widgets.Button;
+import mcjty.lib.gui.widgets.Label;
+import mcjty.lib.gui.widgets.Panel;
+import mcjty.lib.gui.widgets.TextField;
 import mcjty.lib.gui.widgets.*;
 import mcjty.lib.tileentity.GenericEnergyStorageTileEntity;
 import mcjty.lib.typed.TypedMap;
 import mcjty.lib.varia.BlockPosTools;
 import mcjty.lib.varia.Logging;
-import mcjty.rftools.setup.CommandHandler;
 import mcjty.rftools.RFTools;
 import mcjty.rftools.craftinggrid.GuiCraftingGrid;
-import mcjty.rftools.setup.GuiProxy;
 import mcjty.rftools.network.RFToolsMessages;
+import mcjty.rftools.setup.CommandHandler;
+import mcjty.rftools.setup.GuiProxy;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -30,8 +34,9 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -430,7 +435,7 @@ public class GuiStorageScanner extends GenericGuiContainer<StorageScannerTileEnt
         Panel panel = currentPos.getKey();
         if (panel == null || currentPos.getValue() >= numcolumns) {
             panel = new Panel(mc, this).setLayout(new HorizontalLayout().setSpacing(spacing).setHorizontalMargin(1))
-                    .setDesiredHeight(12).setUserObject(new Integer(-1)).setDesiredHeight(16);
+                    .setDesiredHeight(12).setUserObject(-1).setDesiredHeight(16);
             currentPos = MutablePair.of(panel, 0);
             itemList.addChild(panel);
         }
@@ -506,7 +511,7 @@ public class GuiStorageScanner extends GenericGuiContainer<StorageScannerTileEnt
                 layout.setHorizontalMargin(2);
             }
             panel = new Panel(mc, this).setLayout(layout);
-            panel.addChild(new BlockRender(mc, this).setRenderItem(c.getBlock()));
+            panel.addChild(new BlockRender(mc, this).setRenderItem(c.getStack()));
         }
         if (openViewButton.isPressed()) {
             AbstractWidget<?> label;

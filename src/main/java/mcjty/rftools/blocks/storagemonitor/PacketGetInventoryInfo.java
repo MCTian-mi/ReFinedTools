@@ -4,12 +4,10 @@ package mcjty.rftools.blocks.storagemonitor;
 import io.netty.buffer.ByteBuf;
 import mcjty.lib.network.NetworkTools;
 import mcjty.lib.thirteen.Context;
-import mcjty.lib.varia.BlockTools;
 import mcjty.lib.varia.WorldTools;
 import mcjty.rftools.blocks.storage.ModularStorageContainer;
 import mcjty.rftools.blocks.storage.ModularStorageTileEntity;
 import mcjty.rftools.network.RFToolsMessages;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -103,17 +101,18 @@ public class PacketGetInventoryInfo implements IMessage {
     }
 
     private static PacketReturnInventoryInfo.InventoryInfo toInventoryInfo(World world, BlockPos pos, StorageScannerTileEntity te) {
-        IBlockState state = world.getBlockState(pos);
-        Block block = state.getBlock();
+        ItemStack stack = ItemStack.EMPTY;
         String displayName;
+
         if (!WorldTools.chunkLoaded(world, pos)) {
             displayName = "[UNLOADED]";
-            block = null;
         } else if (world.isAirBlock(pos)) {
             displayName = "[REMOVED]";
-            block = null;
         } else {
-            displayName = BlockTools.getReadableName(world, pos);
+            IBlockState state = world.getBlockState(pos);
+            stack = state.getBlock().getItem(world, pos, state);
+            displayName = stack.getDisplayName();
+
             TileEntity storageTe = world.getTileEntity(pos);
             if (storageTe instanceof ModularStorageTileEntity) {
                 ModularStorageTileEntity storageTileEntity = (ModularStorageTileEntity) storageTe;
@@ -125,7 +124,6 @@ public class PacketGetInventoryInfo implements IMessage {
                 }
             }
         }
-        return new PacketReturnInventoryInfo.InventoryInfo(pos, displayName, te.isRoutable(pos), block);
+        return new PacketReturnInventoryInfo.InventoryInfo(pos, displayName, te.isRoutable(pos), stack);
     }
-
 }

@@ -4,11 +4,9 @@ package mcjty.rftools.blocks.storagemonitor;
 import io.netty.buffer.ByteBuf;
 import mcjty.lib.network.NetworkTools;
 import mcjty.lib.thirteen.Context;
-import net.minecraft.block.Block;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,31 +24,32 @@ public class PacketReturnInventoryInfo implements IMessage {
     public void fromBytes(ByteBuf buf) {
         int size = buf.readInt();
         inventories = new ArrayList<>(size);
-        for (int i = 0 ; i < size ; i++) {
+        for (int i = 0; i < size; i++) {
             BlockPos pos = NetworkTools.readPos(buf);
             String name = NetworkTools.readString(buf);
             boolean routable = buf.readBoolean();
-            Block block = null;
+            ItemStack stack = ItemStack.EMPTY;
             if (buf.readBoolean()) {
-                block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(NetworkTools.readString(buf)));
+                stack = NetworkTools.readItemStack(buf);
             }
-            inventories.add(new InventoryInfo(pos, name, routable, block));
+            var info = new PacketReturnInventoryInfo.InventoryInfo(pos, name, routable, stack);
+            inventories.add(info);
         }
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         buf.writeInt(inventories.size());
-        for (InventoryInfo info : inventories) {
+        for (PacketReturnInventoryInfo.InventoryInfo info : inventories) {
             NetworkTools.writePos(buf, info.getPos());
             NetworkTools.writeString(buf, info.getName());
             buf.writeBoolean(info.isRoutable());
-            if (info.getBlock() == null) {
+            ItemStack stack = info.getStack();
+            if (stack.isEmpty()) {
                 buf.writeBoolean(false);
             } else {
                 buf.writeBoolean(true);
-                String id = info.getBlock().getRegistryName().toString();
-                NetworkTools.writeString(buf, id);
+                NetworkTools.writeItemStack(buf, stack);
             }
         }
     }
@@ -77,13 +76,13 @@ public class PacketReturnInventoryInfo implements IMessage {
         private final BlockPos pos;
         private final String name;
         private final boolean routable;
-        private final Block block;
+        private final ItemStack stack;
 
-        public InventoryInfo(BlockPos pos, String name, boolean routable, Block block) {
+        public InventoryInfo(BlockPos pos, String name, boolean routable, ItemStack stack) {
             this.pos = pos;
             this.name = name;
             this.routable = routable;
-            this.block = block;
+            this.stack = stack;
         }
 
         public BlockPos getPos() {
@@ -98,8 +97,8 @@ public class PacketReturnInventoryInfo implements IMessage {
             return routable;
         }
 
-        public Block getBlock() {
-            return block;
+        public ItemStack getStack() {
+            return stack;
         }
     }
 }
