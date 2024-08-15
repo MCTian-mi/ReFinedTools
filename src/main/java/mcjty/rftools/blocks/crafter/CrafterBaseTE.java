@@ -2,17 +2,17 @@ package mcjty.rftools.blocks.crafter;
 
 import mcjty.lib.container.DefaultSidedInventory;
 import mcjty.lib.container.InventoryHelper;
-import mcjty.lib.tileentity.GenericEnergyReceiverTileEntity;
 import mcjty.lib.gui.widgets.ImageChoiceLabel;
+import mcjty.lib.tileentity.GenericEnergyReceiverTileEntity;
+import mcjty.lib.typed.TypedMap;
 import mcjty.lib.varia.ItemStackList;
 import mcjty.lib.varia.Logging;
 import mcjty.lib.varia.NullSidedInvWrapper;
 import mcjty.lib.varia.RedstoneMode;
+import mcjty.rftools.compat.jei.JEIRecipeAcceptor;
 import mcjty.rftools.craftinggrid.CraftingRecipe;
 import mcjty.rftools.items.storage.StorageFilterCache;
 import mcjty.rftools.items.storage.StorageFilterItem;
-import mcjty.rftools.compat.jei.JEIRecipeAcceptor;
-import mcjty.lib.typed.TypedMap;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
@@ -383,7 +383,7 @@ public class CrafterBaseTE extends GenericEnergyReceiverTileEntity implements IT
                     || (!input.isEmpty() && target.isEmpty())) {
                 return false;
             }
-            return target.getItem() == input.getItem();
+            return target.isItemEqual(input);
         }
     }
 

@@ -148,9 +148,9 @@ public class StorageCraftingTools {
 
     private static boolean match(@Nonnull ItemStack target, @Nonnull TIntHashSet targetIDs, @Nonnull ItemStack input, boolean strictDamage) {
         if (strictDamage) {
-            return (target.getItem() == input.getItem() && ((target.getMetadata() == OreDictionary.WILDCARD_VALUE) || target.getMetadata() == input.getMetadata()));
+            return (target.isItemEqual(input));
         } else {
-            if (target.getItem() == input.getItem()) {
+            if (target.isItemEqual(input)) {
                 return true;
             }
 

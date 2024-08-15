@@ -220,7 +220,7 @@ public class SensorTileEntity extends LogicTileEntity implements ITickable, Defa
         }
         ItemStack stack = state.getBlock().getItem(getWorld(), newpos, state);
         if (!stack.isEmpty()) {
-            return matcher.getItem() == stack.getItem();
+            return matcher.isItemEqual(stack);
         } else {
             return matcher.getItem() == Item.getItemFromBlock(state.getBlock());
         }

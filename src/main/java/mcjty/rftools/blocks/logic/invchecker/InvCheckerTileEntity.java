@@ -177,7 +177,7 @@ public class InvCheckerTileEntity extends LogicTileEntity implements ITickable, 
                         nr = stack.getCount();
                     }
                 } else {
-                    if (matcher.getItem() == stack.getItem()) {
+                    if (matcher.isItemEqual(stack)) {
                         nr = stack.getCount();
                     }
                 }
@@ -195,7 +195,7 @@ public class InvCheckerTileEntity extends LogicTileEntity implements ITickable, 
         }
         if (set1.isEmpty()) {
             // The first item is not an ore. In this case we do normal equality of item
-            return s1.getItem() == s2.getItem();
+            return s1.isItemEqual(s2);
         }
 
         int[] oreIDs2 = OreDictionary.getOreIDs(s2);
