@@ -13,18 +13,18 @@ public class BakedModelLoader implements ICustomModelLoader {
 
     @Override
     public boolean accepts(ResourceLocation modelLocation) {
-        if (!modelLocation.getResourceDomain().equals(RFTools.MODID)) {
+        if (!modelLocation.getNamespace().equals(RFTools.MODID)) {
             return false;
         }
         if (modelLocation instanceof ModelResourceLocation && ((ModelResourceLocation)modelLocation).getVariant().equals("inventory")) {
             return false;
         }
-        return CamoShieldBlock.CAMO.equals(modelLocation.getResourcePath());
+        return CamoShieldBlock.CAMO.equals(modelLocation.getPath());
     }
 
     @Override
     public IModel loadModel(ResourceLocation modelLocation) {
-        if (CamoShieldBlock.CAMO.equals(modelLocation.getResourcePath())) {
+        if (CamoShieldBlock.CAMO.equals(modelLocation.getPath())) {
             return MIMIC_MODEL;
         }
         return null;

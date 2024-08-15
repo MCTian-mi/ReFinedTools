@@ -21,7 +21,7 @@ public class SpaceChamberBlock extends Block {
         setHardness(2.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("pickaxe", 0);
-        setUnlocalizedName("rftools.space_chamber");
+        setTranslationKey("rftools.space_chamber");
         setRegistryName("space_chamber");
         setCreativeTab(RFTools.setup.getTab());
         McJtyRegister.registerLater(this, RFTools.instance, ItemBlock::new);
@@ -44,7 +44,7 @@ public class SpaceChamberBlock extends Block {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 }

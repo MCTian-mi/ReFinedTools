@@ -22,7 +22,7 @@ public class GenericTypeItem extends StorageTypeItem {
 
     public GenericTypeItem() {
         setMaxStackSize(16);
-        setUnlocalizedName("generic_module");
+        setTranslationKey("generic_module");
         setRegistryName("generic_module");
         setCreativeTab(RFTools.setup.getTab());
         McJtyRegister.registerLater(this, RFTools.instance);
@@ -42,7 +42,7 @@ public class GenericTypeItem extends StorageTypeItem {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(RFTools.MODID + ":" + getUnlocalizedName().substring(5), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(RFTools.MODID + ":" + getTranslationKey().substring(5), "inventory"));
     }
 
 

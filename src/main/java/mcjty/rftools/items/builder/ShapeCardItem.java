@@ -754,11 +754,11 @@ public class ShapeCardItem extends GenericRFToolsItem implements INBTPreservingI
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack itemStack) {
+    public String getTranslationKey(ItemStack itemStack) {
         if (itemStack.getItemDamage() == 0) {
-            return super.getUnlocalizedName(itemStack);
+            return super.getTranslationKey(itemStack);
         } else {
-            return super.getUnlocalizedName(itemStack) + itemStack.getItemDamage();
+            return super.getTranslationKey(itemStack) + itemStack.getItemDamage();
         }
     }
 

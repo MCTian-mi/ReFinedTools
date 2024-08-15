@@ -51,7 +51,7 @@ public class WorldTickHandler {
             if (chunks != null && !chunks.isEmpty()) {
                 Pair<Integer,Integer> c = chunks.pollFirst();
 //                Logging.log("Pregen " + c.toString() + ".");
-                world.getChunkFromChunkCoords(c.getLeft(), c.getRight());
+                world.getChunk(c.getLeft(), c.getRight());
             } else if (chunks != null) {
                 chunksToPreGen.remove(dim);
             }

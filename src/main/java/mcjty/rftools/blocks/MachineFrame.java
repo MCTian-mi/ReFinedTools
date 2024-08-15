@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MachineFrame extends Block {
     public MachineFrame() {
         super(Material.IRON);
-        setUnlocalizedName("rftools.machine_frame");
+        setTranslationKey("rftools.machine_frame");
         setRegistryName("machine_frame");
         setCreativeTab(RFTools.setup.getTab());
         McJtyRegister.registerLater(this, RFTools.instance, ItemBlock::new);

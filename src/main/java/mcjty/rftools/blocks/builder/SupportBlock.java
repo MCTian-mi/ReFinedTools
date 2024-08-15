@@ -41,7 +41,7 @@ public class SupportBlock extends Block {
 
     public SupportBlock() {
         super(Material.GLASS, MapColor.CYAN);
-        setUnlocalizedName("rftools.support_block");
+        setTranslationKey("rftools.support_block");
         setRegistryName("support_block");
         setCreativeTab(RFTools.setup.getTab());
         McJtyRegister.registerLater(this, RFTools.instance, ItemBlock::new);
@@ -67,7 +67,7 @@ public class SupportBlock extends Block {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 

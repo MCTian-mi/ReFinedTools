@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TeleportProbeItem extends Item {
 
     public TeleportProbeItem() {
-        setUnlocalizedName("teleport_probe");
+        setTranslationKey("teleport_probe");
         setRegistryName("teleport_probe");
         setCreativeTab(RFTools.setup.getTab());
         setMaxStackSize(1);

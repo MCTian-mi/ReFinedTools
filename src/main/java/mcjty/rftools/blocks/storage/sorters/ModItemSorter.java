@@ -57,7 +57,7 @@ public class ModItemSorter implements ItemSorter {
         if (nameForObject == null) {
             return "?";
         }
-        return nameForObject.getResourceDomain();
+        return nameForObject.getNamespace();
     }
 
     public static String getModidForItem(Item item) {
@@ -65,7 +65,7 @@ public class ModItemSorter implements ItemSorter {
         if (nameForObject == null) {
             return "?";
         }
-        return nameForObject.getResourceDomain();
+        return nameForObject.getNamespace();
     }
 
 

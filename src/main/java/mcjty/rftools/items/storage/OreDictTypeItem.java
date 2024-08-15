@@ -25,7 +25,7 @@ public class OreDictTypeItem extends StorageTypeItem {
 
     public OreDictTypeItem() {
         setMaxStackSize(16);
-        setUnlocalizedName("oredict_module");
+        setTranslationKey("oredict_module");
         setRegistryName("oredict_module");
         setCreativeTab(RFTools.setup.getTab());
         McJtyRegister.registerLater(this, RFTools.instance);
@@ -44,7 +44,7 @@ public class OreDictTypeItem extends StorageTypeItem {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(RFTools.MODID + ":" + getUnlocalizedName().substring(5), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(RFTools.MODID + ":" + getTranslationKey().substring(5), "inventory"));
     }
 
     @Override

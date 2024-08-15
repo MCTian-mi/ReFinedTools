@@ -26,7 +26,7 @@ public class DestinationAnalyzerBlock extends Block {
 
     public DestinationAnalyzerBlock() {
         super(Material.IRON);
-        setUnlocalizedName("rftools.destination_analyzer");
+        setTranslationKey("rftools.destination_analyzer");
         setRegistryName("destination_analyzer");
         setCreativeTab(RFTools.setup.getTab());
         setHardness(2.0f);
@@ -69,7 +69,7 @@ public class DestinationAnalyzerBlock extends Block {
 
     public static EnumFacing getFacing(int meta) {
         int i = meta & 7;
-        return EnumFacing.getFront(i);
+        return EnumFacing.byIndex(i);
     }
 
     @Override

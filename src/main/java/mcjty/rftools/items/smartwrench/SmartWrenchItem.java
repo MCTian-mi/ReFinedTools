@@ -41,7 +41,7 @@ import java.util.List;
 public class SmartWrenchItem extends Item implements IToolHammer, SmartWrench {
 
     public SmartWrenchItem() {
-        setUnlocalizedName("smartwrench");
+        setTranslationKey("smartwrench");
         setRegistryName("smartwrench");
         setCreativeTab(RFTools.setup.getTab());
         setMaxStackSize(1);

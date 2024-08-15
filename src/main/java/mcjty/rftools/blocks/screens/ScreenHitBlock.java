@@ -42,7 +42,7 @@ public class ScreenHitBlock extends GenericBlock<ScreenHitTileEntity, EmptyConta
         super(RFTools.instance, Material.GLASS, ScreenHitTileEntity.class, EmptyContainer::new, null, "screen_hitblock", false);
         setBlockUnbreakable();
         setResistance(6000000.0F);
-//        setUnlocalizedName("rftools.screen_hitblock");
+//        setTranslationKey("rftools.screen_hitblock");
 //        setRegistryName("screen_hitblock");
 //        GameRegistry.register(this);
 //        GameRegistry.registerTileEntity(ScreenHitTileEntity.class, "screen_hitblock");
@@ -240,7 +240,7 @@ public class ScreenHitBlock extends GenericBlock<ScreenHitTileEntity, EmptyConta
     }
 
     @Override
-    public EnumPushReaction getMobilityFlag(IBlockState state) {
+    public EnumPushReaction getPushReaction(IBlockState state) {
         return EnumPushReaction.BLOCK;
     }
 }

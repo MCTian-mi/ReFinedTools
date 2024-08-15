@@ -113,8 +113,8 @@ public class StorageModuleItem extends GenericRFToolsItem implements INBTPreserv
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack itemStack) {
-        return super.getUnlocalizedName(itemStack) + itemStack.getItemDamage();
+    public String getTranslationKey(ItemStack itemStack) {
+        return super.getTranslationKey(itemStack) + itemStack.getItemDamage();
     }
 
     @Override

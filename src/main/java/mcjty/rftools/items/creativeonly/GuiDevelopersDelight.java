@@ -186,7 +186,7 @@ public class GuiDevelopersDelight extends GuiScreen {
         Block block = state.getBlock();
 
         blockClassList.addChild(new Label(mc, this).setColor(StyleConfig.colorTextInListNormal).setText("Loc Name: " + block.getLocalizedName()).setHorizontalAlignment(HorizontalAlignment.ALIGN_LEFT));
-        blockClassList.addChild(new Label(mc, this).setColor(StyleConfig.colorTextInListNormal).setText("Unloc Name: " + block.getUnlocalizedName()).setHorizontalAlignment(HorizontalAlignment.ALIGN_LEFT));
+        blockClassList.addChild(new Label(mc, this).setColor(StyleConfig.colorTextInListNormal).setText("Unloc Name: " + block.getTranslationKey()).setHorizontalAlignment(HorizontalAlignment.ALIGN_LEFT));
         blockClassList.addChild(new Label(mc, this).setColor(StyleConfig.colorTextInListNormal).setText("Block Name: " + Block.REGISTRY.getNameForObject(block)).setHorizontalAlignment(HorizontalAlignment.ALIGN_LEFT));
 
         for (String c : blockClasses) {

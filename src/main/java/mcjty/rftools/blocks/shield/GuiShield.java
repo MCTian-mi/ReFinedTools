@@ -383,7 +383,7 @@ public class GuiShield extends GenericGuiContainer<ShieldTEBase> {
         if (!stack.isEmpty()) {
             Block block = Block.getBlockFromItem(stack.getItem());
             if (block != null) {
-                pass = block.getBlockLayer().ordinal();
+                pass = block.getRenderLayer().ordinal();
             }
         }
         sendServerCommand(RFToolsMessages.INSTANCE, ShieldTEBase.CMD_APPLYCAMO,

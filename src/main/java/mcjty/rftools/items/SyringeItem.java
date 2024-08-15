@@ -67,8 +67,8 @@ public class SyringeItem extends GenericRFToolsItem {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         for (int i = 0 ; i <= 5 ; i++) {
-            String domain = getRegistryName().getResourceDomain();
-            String path = getRegistryName().getResourcePath();
+            String domain = getRegistryName().getNamespace();
+            String path = getRegistryName().getPath();
             ModelBakery.registerItemVariants(this, new ModelResourceLocation(new ResourceLocation(domain, path + i), "inventory"));
         }
 
@@ -85,8 +85,8 @@ public class SyringeItem extends GenericRFToolsItem {
             } else {
                 level = ((level-1) * 4 / (GeneralConfiguration.maxMobInjections.get()-1)) + 1;
             }
-            String domain = getRegistryName().getResourceDomain();
-            String path = getRegistryName().getResourcePath();
+            String domain = getRegistryName().getNamespace();
+            String path = getRegistryName().getPath();
             return new ModelResourceLocation(new ResourceLocation(domain, path + level), "inventory");
         });
     }

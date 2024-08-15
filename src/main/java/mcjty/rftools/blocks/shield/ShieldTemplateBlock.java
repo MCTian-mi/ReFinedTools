@@ -60,7 +60,7 @@ public class ShieldTemplateBlock extends Block {
 
     public ShieldTemplateBlock() {
         super(Material.GLASS);
-        setUnlocalizedName("rftools.shield_template_block");
+        setTranslationKey("rftools.shield_template_block");
         setRegistryName("shield_template_block");
         setCreativeTab(RFTools.setup.getTab());
         McJtyRegister.registerLater(this, RFTools.instance, DamageMetadataItemBlock::new);
@@ -74,7 +74,7 @@ public class ShieldTemplateBlock extends Block {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 

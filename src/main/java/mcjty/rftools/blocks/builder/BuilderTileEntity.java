@@ -1880,7 +1880,7 @@ public class BuilderTileEntity extends GenericEnergyReceiverTileEntity implement
         tc.setInteger("z", destpos.getZ());
         TileEntity tileEntity = TileEntity.create(destWorld, tc);
         if (tileEntity != null) {
-            destWorld.getChunkFromBlockCoords(destpos).addTileEntity(tileEntity);
+            destWorld.getChunk(destpos).addTileEntity(tileEntity);
             tileEntity.markDirty();
             destWorld.notifyBlockUpdate(destpos, newDestState, newDestState, 3);
         }

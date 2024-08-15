@@ -105,8 +105,8 @@ public class ChargedPorterItem extends GenericRFToolsItem implements IEnergyItem
     @SideOnly(Side.CLIENT)
     public void initModel() {
         for (int i = 0 ; i <= 8 ; i++) {
-            String domain = getRegistryName().getResourceDomain();
-            String path = getRegistryName().getResourcePath();
+            String domain = getRegistryName().getNamespace();
+            String path = getRegistryName().getPath();
             ModelBakery.registerItemVariants(this, new ModelResourceLocation(new ResourceLocation(domain, path + i), "inventory"));
         }
 
@@ -122,8 +122,8 @@ public class ChargedPorterItem extends GenericRFToolsItem implements IEnergyItem
             } else if (level > 8) {
                 level = 8;
             }
-            String domain = getRegistryName().getResourceDomain();
-            String path = getRegistryName().getResourcePath();
+            String domain = getRegistryName().getNamespace();
+            String path = getRegistryName().getPath();
             return new ModelResourceLocation(new ResourceLocation(domain, path + (8 - level)), "inventory");
         });
     }

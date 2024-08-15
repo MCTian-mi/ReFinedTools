@@ -26,7 +26,7 @@ public class MatterBoosterBlock extends Block {
 
     public MatterBoosterBlock() {
         super(Material.IRON);
-        setUnlocalizedName("rftools.matter_booster");
+        setTranslationKey("rftools.matter_booster");
         setRegistryName("matter_booster");
         setCreativeTab(RFTools.setup.getTab());
         setHardness(2.0f);
@@ -69,7 +69,7 @@ public class MatterBoosterBlock extends Block {
 
     public static EnumFacing getFacing(int meta) {
         int i = meta & 7;
-        return EnumFacing.getFront(i);
+        return EnumFacing.byIndex(i);
     }
 
     @Override

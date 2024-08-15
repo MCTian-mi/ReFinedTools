@@ -268,8 +268,8 @@ public class SensorTileEntity extends LogicTileEntity implements ITickable, Defa
             return false;
         }
 
-        String matcherBlockName = matcherFluidBlock.getUnlocalizedName();
-        String blockName = block.getUnlocalizedName();
+        String matcherBlockName = matcherFluidBlock.getTranslationKey();
+        String blockName = block.getTranslationKey();
         return blockName.equals(matcherBlockName);
     }
 

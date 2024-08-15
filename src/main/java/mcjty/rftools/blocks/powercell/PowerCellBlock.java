@@ -72,7 +72,7 @@ public class PowerCellBlock extends GenericRFToolsBlock<PowerCellTileEntity, Pow
         // due to MinecraftForge/MinecraftForge#4898. Since we have powercell blocks and items with different
         // models, append "_item" to powercell items.
         ResourceLocation blockRegistryName = getRegistryName();
-        ResourceLocation itemRegistryName = new ResourceLocation(blockRegistryName.getResourceDomain(), blockRegistryName.getResourcePath() + "_item");
+        ResourceLocation itemRegistryName = new ResourceLocation(blockRegistryName.getNamespace(), blockRegistryName.getPath() + "_item");
         McJtyLib.proxy.initCustomItemModel(Item.getItemFromBlock(this), 0, new ModelResourceLocation(itemRegistryName, "inventory"));
     }
 

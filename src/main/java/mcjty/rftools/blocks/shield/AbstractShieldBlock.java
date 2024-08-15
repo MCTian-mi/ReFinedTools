@@ -46,7 +46,7 @@ public abstract class AbstractShieldBlock extends Block implements ITileEntityPr
         super(Material.GLASS);
         this.lightOpacity = opaque ? 255 : 0;
         setRegistryName(registryName);
-        setUnlocalizedName(unlocName);
+        setTranslationKey(unlocName);
         setBlockUnbreakable();
         setResistance(6000000.0F);
         McJtyRegister.registerLater(this, RFTools.instance, ItemBlock::new);
@@ -90,7 +90,7 @@ public abstract class AbstractShieldBlock extends Block implements ITileEntityPr
     }
 
     @Override
-    public EnumPushReaction getMobilityFlag(IBlockState state) {
+    public EnumPushReaction getPushReaction(IBlockState state) {
         return EnumPushReaction.BLOCK;
     }
 
@@ -187,7 +187,7 @@ public abstract class AbstractShieldBlock extends Block implements ITileEntityPr
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+    public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
         NoTickShieldBlockTileEntity shieldBlockTileEntity = (NoTickShieldBlockTileEntity) world.getTileEntity(pos);
         if (!(entity instanceof EntityLivingBase)) {
             int cdData = shieldBlockTileEntity.getCollisionData();

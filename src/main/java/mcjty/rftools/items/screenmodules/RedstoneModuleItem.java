@@ -37,7 +37,7 @@ public class RedstoneModuleItem extends GenericRFToolsItem implements IModulePro
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(RFTools.MODID + ":" + getUnlocalizedName().substring(5), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(RFTools.MODID + ":" + getTranslationKey().substring(5), "inventory"));
     }
 
 

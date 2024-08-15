@@ -43,7 +43,7 @@ public class DevelopersDelightItem extends GenericRFToolsItem {
         Block block = state.getBlock();
         int meta = block.getMetaFromState(state);
         String modid = BlockTools.getModidForBlock(block);
-        Logging.log("Block: " + block.getUnlocalizedName() + ", Meta: " + meta + ", Mod: " + modid);
+        Logging.log("Block: " + block.getTranslationKey() + ", Meta: " + meta + ", Mod: " + modid);
         TileEntity tileEntity = world.getTileEntity(pos);
         if (tileEntity != null) {
             NBTTagCompound tag = new NBTTagCompound();
