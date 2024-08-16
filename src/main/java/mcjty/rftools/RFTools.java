@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.*;
 import java.util.Optional;
 import java.util.function.Function;
 
-@Mod(modid = RFTools.MODID, name = "RFTools",
+@Mod(modid = Tags.MODID, name = Tags.MODNAME,
         dependencies =
                         "required-after:mcjtylib_ng@[" + RFTools.MIN_MCJTYLIB_VER + ",);" +
                         "before:xnet@[" + RFTools.MIN_XNET_VER + ",);" +
@@ -28,8 +28,8 @@ import java.util.function.Function;
         acceptedMinecraftVersions = "[1.12,1.13)",
         version = RFTools.VERSION)
 public class RFTools implements ModBase {
-    public static final String MODID = "rftools";
-    public static final String VERSION = "7.73";
+    public static final String MODID = Tags.MODID;
+    public static final String VERSION = Tags.VERSION;
     public static final String MIN_FORGE_VER = "14.22.0.2464";
     public static final String MIN_MCJTYLIB_VER = "3.5.4";
     public static final String MIN_XNET_VER = "1.7.0";

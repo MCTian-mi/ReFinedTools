@@ -1,7 +1,7 @@
 [
 {
   "modid": "rftools",
-  "name": "RFTools",
+  "name": "ReFinedTools",
   "description": "RedFlux tools",
   "version": "${version}",
   "mcversion": "${mcversion}",
