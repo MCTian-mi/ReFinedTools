@@ -4,6 +4,7 @@ import mcjty.lib.base.StyleConfig;
 import mcjty.lib.container.GhostOutputSlot;
 import mcjty.lib.gui.GenericGuiContainer;
 import mcjty.lib.gui.Window;
+import mcjty.lib.gui.WindowManager;
 import mcjty.lib.gui.events.BlockRenderEvent;
 import mcjty.lib.gui.events.DefaultSelectionEvent;
 import mcjty.lib.gui.layout.HorizontalAlignment;
@@ -88,6 +89,12 @@ public class GuiStorageScanner extends GenericGuiContainer<StorageScannerTileEnt
 
         xSize = STORAGE_MONITOR_WIDTH;
         ySize = STORAGE_MONITOR_HEIGHT;
+    }
+
+    @Override
+    protected void registerWindows(WindowManager mgr) {
+        super.registerWindows(mgr);
+        mgr.addWindow(craftingGrid.getWindow());
     }
 
     @Override

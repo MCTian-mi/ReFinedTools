@@ -5,28 +5,29 @@ import mcjty.lib.container.GenericContainer;
 import mcjty.lib.container.GhostOutputSlot;
 import mcjty.lib.gui.GenericGuiContainer;
 import mcjty.lib.gui.Window;
+import mcjty.lib.gui.WindowManager;
 import mcjty.lib.gui.layout.HorizontalAlignment;
 import mcjty.lib.gui.layout.HorizontalLayout;
 import mcjty.lib.gui.layout.PositionalLayout;
-import mcjty.lib.gui.widgets.*;
 import mcjty.lib.gui.widgets.Button;
 import mcjty.lib.gui.widgets.Label;
 import mcjty.lib.gui.widgets.Panel;
 import mcjty.lib.gui.widgets.TextField;
+import mcjty.lib.gui.widgets.*;
 import mcjty.lib.typed.Key;
 import mcjty.lib.typed.Type;
 import mcjty.lib.typed.TypedMap;
 import mcjty.lib.varia.Logging;
-import mcjty.rftools.setup.CommandHandler;
 import mcjty.rftools.RFTools;
 import mcjty.rftools.blocks.storage.modules.DefaultTypeModule;
 import mcjty.rftools.blocks.storage.modules.TypeModule;
 import mcjty.rftools.blocks.storage.sorters.ItemSorter;
 import mcjty.rftools.craftinggrid.CraftingGridProvider;
 import mcjty.rftools.craftinggrid.GuiCraftingGrid;
-import mcjty.rftools.setup.GuiProxy;
 import mcjty.rftools.items.storage.StorageModuleItem;
 import mcjty.rftools.network.RFToolsMessages;
+import mcjty.rftools.setup.CommandHandler;
+import mcjty.rftools.setup.GuiProxy;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -117,6 +118,12 @@ public class GuiModularStorage extends GenericGuiContainer<ModularStorageTileEnt
                 //                slot.yPos += ySize - STORAGE_HEIGHT0;
             }
         }
+    }
+
+    @Override
+    protected void registerWindows(WindowManager mgr) {
+        super.registerWindows(mgr);
+        mgr.addWindow(craftingGrid.getWindow());
     }
 
     @Override
