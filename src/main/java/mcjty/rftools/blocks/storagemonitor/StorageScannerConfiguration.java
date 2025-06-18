@@ -9,7 +9,6 @@ public class StorageScannerConfiguration {
     public static ConfigSpec.IntValue rfPerRequest;
     public static ConfigSpec.IntValue rfPerInsert;
     public static ConfigSpec.IntValue hilightTime;
-    public static ConfigSpec.ConfigValue<String> MODLISTPRIORITY;
 
     public static ConfigSpec.BooleanValue hilightStarredOnGuiOpen;
     public static ConfigSpec.BooleanValue requestStraightToInventory;
@@ -40,17 +39,10 @@ public class StorageScannerConfiguration {
                 SERVER_BUILDER
                         .comment("Maximum RF storage that the storage scanner can hold")
                         .defineInRange("scannerMaxRF", 50000, 0, Integer.MAX_VALUE);
-        MODLISTPRIORITY =
-                SERVER_BUILDER
-                        .comment(
-                                "a list of mod ids that will be prioritized for selection in storage scanners (and"
-                                        + " other jei accepting grids), order matters")
-                        .define("modPriority", "gregtech;pyrotech;minecraft");
         RECEIVEPERTICK =
                 SERVER_BUILDER
                         .comment("RF per tick that the storage scanner can receive")
                         .defineInRange("scannerRFPerTick", 500, 0, Integer.MAX_VALUE);
-
         hilightStarredOnGuiOpen =
                 CLIENT_BUILDER
                         .comment(

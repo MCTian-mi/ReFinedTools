@@ -1,11 +1,9 @@
 package mcjty.rftools.config;
 
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import mcjty.lib.thirteen.ConfigSpec;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class GeneralConfiguration {
     public static final String CATEGORY_GENERAL = "general";
@@ -36,6 +34,10 @@ public class GeneralConfiguration {
 
 
     public static ConfigSpec.IntValue villagerId;               // -1 means disable, 0 means auto-id, other means fixed id
+
+    public static ConfigSpec.ConfigValue<List<? extends String>> modPreferenceList;
+    // A list of mod IDs whose items are prioritized for ingredient transfer in storage scanners (and other JEI accepting grids).
+    public static Map<String, Integer> modPriority = new Object2IntArrayMap<>();
 
     public static void init(ConfigSpec.Builder SERVER_BUILDER, ConfigSpec.Builder CLIENT_BUILDER) {
         SERVER_BUILDER.comment("General settings").push(CATEGORY_GENERAL);
@@ -88,6 +90,12 @@ public class GeneralConfiguration {
 //            property.setComment("The ID for the RFTools villager. -1 means disable, 0 means to automatically assigns an id, any other number will use that as fixed id");
 //            category.put("villagerId", property);
 //        }
+        modPreferenceList =
+                CLIENT_BUILDER
+                        .comment(
+                                "A *CLIENT SIDE* of mod IDs whose items are prioritized for ingredient transfer in storage scanners (and"
+                                        + " other jei accepting grids), order matters")
+                        .defineList("modPreferenceList", new ArrayList<>(), o -> o instanceof String);
 
         SERVER_BUILDER.pop();
         CLIENT_BUILDER.pop();
@@ -96,6 +104,11 @@ public class GeneralConfiguration {
     public static void resolve() {
         oregenDimensionsWithDimensions.addAll(dimensionalShardOregenWithDimensions.get());
         oregenDimensionsWithoutDimensions.addAll(dimensionalShardOregenWithoutDimensions.get());
+
+        var modList = modPreferenceList.get();
+        for (int i = 0; i < modList.size(); i++) {
+            modPriority.put(modList.get(i), i + 1); // +1 to make sure that mods here has priority > 0
+        }
     }
 
     private static int findFreeVillagerId() {
