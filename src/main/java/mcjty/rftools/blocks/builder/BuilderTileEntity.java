@@ -193,7 +193,7 @@ public class BuilderTileEntity extends GenericEnergyReceiverTileEntity implement
 
     public static final Key<Boolean> VALUE_WAIT = new Key<>("wait", Type.BOOLEAN);
     public static final Key<Boolean> VALUE_LOOP = new Key<>("loop", Type.BOOLEAN);
-    public static final Key<Boolean> VALUE_HILIGHT = new Key<>("hilight", Type.BOOLEAN);
+    public static final Key<Boolean> VALUE_HILIGHT = new Key<>("highlight", Type.BOOLEAN);
     public static final Key<Boolean> VALUE_SUPPORT = new Key<>("support", Type.BOOLEAN);
     public static final Key<Boolean> VALUE_SILENT = new Key<>("silent", Type.BOOLEAN);
     public static final Key<Boolean> VALUE_ENTITIES = new Key<>("entities", Type.BOOLEAN);
