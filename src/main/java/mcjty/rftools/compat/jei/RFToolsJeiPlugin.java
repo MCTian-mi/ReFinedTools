@@ -58,7 +58,9 @@ public class RFToolsJeiPlugin implements IModPlugin {
     @Override
     public void register(@Nonnull IModRegistry registry) {
         IRecipeTransferRegistry transferRegistry = registry.getRecipeTransferRegistry();
-        if (CrafterConfiguration.enabled.get()) CrafterRecipeTransferHandler.register(transferRegistry);
+        if (CrafterConfiguration.enabled.get()) {
+            CrafterRecipeTransferHandler.register(transferRegistry);
+        }
         ModularStorageRecipeTransferHandler.register(transferRegistry);
         ModularStorageItemRecipeTransferHandler.register(transferRegistry);
         RemoteStorageItemRecipeTransferHandler.register(transferRegistry);
