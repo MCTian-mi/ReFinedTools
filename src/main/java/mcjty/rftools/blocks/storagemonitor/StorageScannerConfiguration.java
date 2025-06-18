@@ -1,7 +1,6 @@
 package mcjty.rftools.blocks.storagemonitor;
 
 import mcjty.lib.thirteen.ConfigSpec;
-import net.minecraftforge.common.config.Configuration;
 
 public class StorageScannerConfiguration {
     public static final String CATEGORY_STORAGE_MONITOR = "storagemonitor";
