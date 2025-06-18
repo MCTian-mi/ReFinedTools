@@ -106,8 +106,9 @@ public class GeneralConfiguration {
         oregenDimensionsWithoutDimensions.addAll(dimensionalShardOregenWithoutDimensions.get());
 
         var modList = modPreferenceList.get();
-        for (int i = 0; i < modList.size(); i++) {
-            modPriority.put(modList.get(i), i + 1); // +1 to make sure that mods here has priority > 0
+        int priority = modList.size();
+        for (String mod : modList) {
+            modPriority.put(mod, priority--); // making sure priority > 0
         }
     }
 
