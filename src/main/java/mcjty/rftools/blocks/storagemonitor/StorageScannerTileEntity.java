@@ -688,7 +688,8 @@ public class StorageScannerTileEntity extends GenericEnergyReceiverTileEntity im
         for (BlockPos p : old) {
             if (xnetAccess.containsKey(p) || inRange(p)) {
                 TileEntity te = getWorld().getTileEntity(p);
-                if (InventoryHelper.isInventory(te) && !(te instanceof StorageScannerTileEntity)) {
+                if (InventoryHelper.isInventory(te) && !(te instanceof StorageScannerTileEntity)
+                && !te.getTileData().getBoolean("PlacedByRC")) {
                     IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                     if (handler == null || seenItemHandlers.add(handler)) {
                         inventories.add(p);
