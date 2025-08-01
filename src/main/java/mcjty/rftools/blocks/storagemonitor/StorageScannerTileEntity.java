@@ -15,8 +15,8 @@ import mcjty.lib.varia.*;
 import mcjty.rftools.RFTools;
 import mcjty.rftools.api.general.IInventoryTracker;
 import mcjty.rftools.api.storage.IStorageScanner;
-import mcjty.rftools.craftinggrid.*;
 import mcjty.rftools.compat.jei.JEIRecipeAcceptor;
+import mcjty.rftools.craftinggrid.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
@@ -77,14 +77,14 @@ public class StorageScannerTileEntity extends GenericEnergyReceiverTileEntity im
 
     @Override
     public IAction[] getActions() {
-        return new IAction[] {
+        return new IAction[]{
                 new DefaultAction(ACTION_CLEARGRID, this::clearGrid),
         };
     }
 
     @Override
     public IValue<?>[] getValues() {
-        return new IValue[] {
+        return new IValue[]{
                 new DefaultValue<>(VALUE_EXPORT, this::isExportToCurrent, this::setExportToCurrent),
                 new DefaultValue<>(VALUE_RADIUS, this::getRadius, this::setRadius),
         };
@@ -688,7 +688,8 @@ public class StorageScannerTileEntity extends GenericEnergyReceiverTileEntity im
         for (BlockPos p : old) {
             if (xnetAccess.containsKey(p) || inRange(p)) {
                 TileEntity te = getWorld().getTileEntity(p);
-                if (InventoryHelper.isInventory(te) && !(te instanceof StorageScannerTileEntity)) {
+                if (InventoryHelper.isInventory(te) && !(te instanceof StorageScannerTileEntity)
+                        && !te.getTileData().getBoolean("StorageScannerBlacklisted")) {
                     IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                     if (handler == null || seenItemHandlers.add(handler)) {
                         inventories.add(p);
@@ -723,7 +724,8 @@ public class StorageScannerTileEntity extends GenericEnergyReceiverTileEntity im
     private void inventoryAddNew(Set<BlockPos> oldAdded, Set<IItemHandler> seenItemHandlers, BlockPos p) {
         if (!oldAdded.contains(p)) {
             TileEntity te = getWorld().getTileEntity(p);
-            if (InventoryHelper.isInventory(te) && !(te instanceof StorageScannerTileEntity)) {
+            if (InventoryHelper.isInventory(te) && !(te instanceof StorageScannerTileEntity)
+                    && !te.getTileData().getBoolean("StorageScannerBlacklisted")) {
                 if (!inventories.contains(p)) {
                     IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                     if (handler == null || seenItemHandlers.add(handler)) {
